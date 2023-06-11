@@ -1,8 +1,7 @@
-import './assets/main.css'
+import '@/assets/style/common.scss' //初始化样式
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import App from './App.vue'
 import router from './router'
 
