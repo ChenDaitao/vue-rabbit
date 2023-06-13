@@ -1,28 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import layoutApi from '@/api/server/layout'
-import type { baseObj } from '@/api/server/type'
 import { useScroll } from '@vueuse/core'
-import { ElMessage } from 'element-plus'
+import useLayoutStore from '@/stores/modules/layout'
+const layoutStore = useLayoutStore()
 
-type categoryListType = baseObj
-
-const categoryList = ref<categoryListType[]>([])
 const { y } = useScroll(window) //单位px
-
-async function getCategoryList() {
-  const { code, result, msg } = await layoutApi.getCategoryList()
-  if (code == '1') {
-    categoryList.value = result
-    console.log(categoryList.value)
-  } else
-    ElMessage({
-      showClose: true,
-      message: `${msg},请稍后再试`,
-      type: 'error'
-    })
-}
-getCategoryList() //获取导航栏信息
 </script>
 
 <template>
@@ -34,7 +15,7 @@ getCategoryList() //获取导航栏信息
       </h1>
 
       <ul class="app-header-nav">
-        <li class="home" v-for="item in categoryList" :key="item.id">
+        <li class="home" v-for="item in layoutStore.categoryList" :key="item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
       </ul>
@@ -62,8 +43,8 @@ getCategoryList() //获取导航栏信息
   // NOTE:关键样式：状态一：往上平移自身高度 + 完全透明
   transform: translateY(-100%);
   opacity: 0;
-  // 状态二：移除平移 + 完全不透明
   &.show {
+    // 状态二：移除平移 + 完全不透明
     transition: all 0.3s linear;
     transform: none;
     opacity: 1;
