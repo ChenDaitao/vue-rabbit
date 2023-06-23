@@ -5,7 +5,7 @@
 -->
 
 <script setup lang="ts">
-import HomePanel from './panel.vue'
+import HomePanel from '@/components/homePanel/index.vue'
 import homeApi from '@/api/server/home'
 import type { hotObj } from '@/api/server/type'
 import { ElMessage } from 'element-plus'

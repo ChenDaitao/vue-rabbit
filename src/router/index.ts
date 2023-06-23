@@ -6,14 +6,17 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: 'layout',
       component: Layout, //一级路由
       children: [
         {
           path: '', // NOTE: 默认显示home二级菜单 无需填写path
+          name: 'home',
           component: () => import('@/views/home/index.vue')
         },
         {
-          path: 'category',
+          path: 'category/:id',
+          name: 'category',
           component: () => import('@/views/categroy/index.vue')
         }
       ]

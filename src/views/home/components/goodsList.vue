@@ -1,11 +1,11 @@
 <!--
  * @Date: 2023-06-13 21:21:11
- * @LastEditTime: 2023-06-13 21:34:56
+ * @LastEditTime: 2023-06-23 11:04:56
  * @Description: 新鲜好物
 -->
 
 <script setup lang="ts">
-import HomePanel from './panel.vue'
+import HomePanel from '@/components/homePanel/index.vue'
 import homeApi from '@/api/server/home'
 import type { goodsObj } from '@/api/server/type'
 import { ElMessage } from 'element-plus'

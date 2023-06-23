@@ -50,3 +50,14 @@ export interface hotObj {
   title: string
 }
 export type hotList = ResultType<hotObj[]>
+
+// NOTE: 产品列表
+export type productObj = {
+  id: string
+  name: string
+  children: childrenObj[]
+  goods: goodsObj[]
+  picture: string
+  saleInfo: string
+}
+export type productList = ResultType<productObj[]>
