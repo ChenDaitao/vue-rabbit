@@ -1,10 +1,14 @@
 import Api from '../index'
 import type { bannerList, newGoodList, hotList, productList } from './type'
 
+interface bannerParam {
+  distributionSite?: string //  1首页  2分类
+}
+
 class homeApi extends Api {
   /* 轮播图获取 */
-  getBanner() {
-    return this.get<bannerList>(`${this.baseUrl}/home/banner`)
+  getBanner(data: bannerParam) {
+    return this.get<bannerList>(`${this.baseUrl}/home/banner`, data)
   }
   /* 新鲜好物获取 */
   getNewGoods() {

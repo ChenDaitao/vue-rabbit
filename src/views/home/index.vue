@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import leftCategory from './components/leftCategory.vue'
-import RightBanner from './components/rightBanner.vue'
+import RightBanner from '@/components/bannerImage/index.vue'
 import GoodsList from './components/goodsList.vue'
 import hotList from './components/hotList.vue'
 import ProductList from './components/product.vue'

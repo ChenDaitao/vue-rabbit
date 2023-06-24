@@ -11,6 +11,11 @@ interface childrenObj {
   id: string
   name: string
   picture: string
+  brands?: null | any
+  categories?: null | any
+  saleProperties?: null | any
+  parentId?: null | any
+  parentName?: null | any
 }
 export interface goodsObj {
   desc: string
@@ -25,17 +30,17 @@ export interface baseObj {
   name: string
   children?: childrenObj[]
   goods?: goodsObj[]
-  picture?: string
+  picture?: string | null
 }
 // NOTE: 分类列表
 export type categoryList = ResultType<baseObj[]>
 
 // NOTE: 轮播图列表
 export interface banner {
-  hrefUrl: string
-  id: string
-  imgUrl: string
-  type: string
+  id: string //轮播图id
+  imgUrl: string //轮播图地址
+  hrefUrl: string //轮播图跳转链接
+  type: string //轮播图跳转类型
 }
 export type bannerList = ResultType<banner[]>
 
@@ -61,3 +66,6 @@ export type productObj = {
   saleInfo: string
 }
 export type productList = ResultType<productObj[]>
+
+// NOTE: 分类相关
+export type categoryData = ResultType<baseObj>
