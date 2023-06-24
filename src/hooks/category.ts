@@ -1,6 +1,6 @@
 /*
  * @Date: 2023-06-24 18:32:25
- * @LastEditTime: 2023-06-24 18:42:45
+ * @LastEditTime: 2023-06-24 20:27:02
  * @Description: 获取分类数据相关hook 解决路由缓存问题
  */
 import categoryApi from '@/api/server/category'
@@ -13,7 +13,7 @@ export function useCategory() {
   const categoryData = ref<baseObj>() //分类数据
   const route = useRoute()
 
-  const getCategoryData = (id: number) => {
+  const getCategoryData = (id: string) => {
     categoryApi
       .getCategoryList(id)
       .then(({ code, result, msg }) => {

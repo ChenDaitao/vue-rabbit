@@ -24,6 +24,9 @@ export interface goodsObj {
   orderNum: null | number
   picture: string
   price: string
+  categories?: null | any //分类集合
+  brands?: null | any //推荐品牌
+  saleProperties?: null | any //销售属性
 }
 export interface baseObj {
   id: string
@@ -31,6 +34,7 @@ export interface baseObj {
   children?: childrenObj[]
   goods?: goodsObj[]
   picture?: string | null
+  parentName?: string | null
 }
 // NOTE: 分类列表
 export type categoryList = ResultType<baseObj[]>
@@ -69,3 +73,22 @@ export type productList = ResultType<productObj[]>
 
 // NOTE: 分类相关
 export type categoryData = ResultType<baseObj>
+
+// NOTE: 二级分类菜单
+export type subCategoryList = ResultType<baseObj>
+
+// NOTE: 二级分类菜单
+interface subGood {
+  counts: number
+  page: number
+  pageSize: number
+  pages: number
+  items: subItem[]
+}
+export interface subItem {
+  id: string
+  name: string
+  desc: string
+  price: string //TODO:文档不完整
+}
+export type subGoods = ResultType<subGood>
