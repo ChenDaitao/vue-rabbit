@@ -30,7 +30,13 @@ const router = createRouter({
       path: '/login',
       component: () => import('@/views/login/index.vue')
     }
-  ]
+  ],
+  // 路由滚动行为限制 NOTE: 使每次切换路由使 页面都在顶部显示
+  scrollBehavior() {
+    return {
+      top: 0
+    }
+  }
 })
 
 export default router

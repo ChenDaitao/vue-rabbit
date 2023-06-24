@@ -1,8 +1,3 @@
-<!--
- * @Date: 2023-06-24 19:18:22
- * @LastEditTime: 2023-06-24 21:18:05
- * @Description: TODO:
--->
 <script setup lang="ts">
 import categoryApi from '@/api/server/category'
 import { ElMessage } from 'element-plus'
