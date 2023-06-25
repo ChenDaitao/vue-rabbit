@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-06-13 21:21:11
- * @LastEditTime: 2023-06-23 11:04:56
+ * @LastEditTime: 2023-06-24 22:13:01
  * @Description: 新鲜好物
 -->
 
@@ -28,7 +28,7 @@ getNewList()
     <template #main>
       <ul class="goods-list">
         <li v-for="item in newList" :key="item.id">
-          <RouterLink to="/">
+          <RouterLink :to="`detail/${item.id}`">
             <img :src="item.picture" alt="" />
             <p class="name">{{ item.name }}</p>
             <p class="price">&yen;{{ item.price }}</p>
