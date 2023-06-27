@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import detailAPi from '@/api/server/detail'
 import hotListArea from './components/hotListArea.vue'
-import imagePreview from './components/imagePreview.vue'
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
-import type { detailGoodsObj } from '@/api/server/type'
+import type { detailGoodsObj, skuType } from '@/api/server/type'
 
 const route = useRoute()
 // 获取列表导航
@@ -14,6 +13,11 @@ const getDetailGoodList = async () => {
   detailGoods.value = result
 }
 getDetailGoodList()
+
+// SKU 选择商品
+const getSelectGoodsType = (payload: skuType) => {
+  console.log(payload, 'SKU')
+}
 </script>
 
 <template>
@@ -29,7 +33,7 @@ getDetailGoodList()
           <el-breadcrumb-item :to="{ path: `/category/sub/${detailGoods?.categories[0].id}` }">
             {{ detailGoods?.categories[0].name }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ detailGoods?.brand.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 商品信息 -->
@@ -87,7 +91,7 @@ getDetailGoodList()
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="detailGoods" @change="getSelectGoodsType" />
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->

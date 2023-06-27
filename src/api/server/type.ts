@@ -111,7 +111,7 @@ export interface detailGoodsObj {
   videoScale: number //商品主图视频比例
   mainPictures: string[] //商品主图集合
   specs: specsObj[] // 商品可选规格集合备注：规格集合一定要和skus集合下的specs 顺序保持一致
-  skus: any // 商品sku集合
+  skus: skuType // 商品sku集合
   categories: any // 商品所属分类
   details: any // 商品详情
   isPreSale: boolean // 商品是否为预售商品
@@ -131,6 +131,14 @@ interface valuesObj {
   name: string // 可选值名称
   picture: string | null // 可选值图片地址
   desc: string // 可选值备注
+}
+export interface skuType {
+  id: string
+  inventory: number
+  oldPrice: string
+  picture: string
+  price: string
+  skuCode: string
 }
 interface brandObj {
   id: string // 品牌id
