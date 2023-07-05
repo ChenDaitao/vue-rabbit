@@ -1,12 +1,13 @@
 import '@/assets/style/common.scss' //初始化样式
 
+import 'element-plus/dist/index.css' //elementPlus 按需引入 使用组件式APi需要手动引入样式
+
 import { createApp } from 'vue'
 import { store } from '@/stores/index'
 import App from './App.vue'
 import router from './router'
 import { lazyPlugin } from '@/directives/lazy-image'
 import { componentPlugin } from '@/components/index'
-
 const app = createApp(App)
 
 app.use(store)

@@ -154,3 +154,19 @@ export type detailGoodsList = ResultType<detailGoodsObj>
 
 // NOTE:热榜商品 返回类型
 export type hotListAreaRes = ResultType<goodsObj>
+
+// NOTE: 用户信息
+export interface userInfoObj {
+  id: string //用户id
+  account: string //用户名
+  mobile: string //用户手机号
+  token: string //用户token
+  avatar: string //用户头像
+  nickname: string // 用户昵称
+  gender: string // 用户性别
+  birthday: string // 用户生日
+  cityCode: string // 用户所在城市编码
+  provinceCode: string // 用户所在省份编码
+  profession: string // 用户职业
+}
+export type userInfo = ResultType<userInfoObj>

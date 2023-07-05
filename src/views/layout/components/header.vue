@@ -1,4 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
+import { useUserStore } from '@/stores/modules/login'
+
+const confirm = () => {
+  const userStore = useUserStore()
+  userStore.getInfoClear()
+  router.push('/login')
+}
+</script>
 
 <template>
   <nav class="app-topnav">
@@ -6,10 +16,17 @@
       <ul>
         <template v-if="true">
           <li>
-            <a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a>
+            <a href="javascript:;" @click="router.push('/login')">
+              <i class="iconfont icon-user"></i>请先登录
+            </a>
           </li>
           <li>
-            <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
+            <el-popconfirm
+              title="确认退出吗?"
+              confirm-button-text="确认"
+              cancel-button-text="取消"
+              @confirm="confirm"
+            >
               <template #reference>
                 <a href="javascript:;">退出登录</a>
               </template>
@@ -42,17 +59,14 @@
         color: #cdcdcd;
         line-height: 1;
         display: inline-block;
-
         i {
           font-size: 14px;
           margin-right: 2px;
         }
-
         &:hover {
           color: $xtxColor;
         }
       }
-
       ~ li {
         a {
           border-left: 2px solid #666;
