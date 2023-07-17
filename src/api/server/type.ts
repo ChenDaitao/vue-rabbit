@@ -136,9 +136,10 @@ export interface skuType {
   id: string
   inventory: number
   oldPrice: string
-  picture: string
+  picture?: string
+  specsText?: string
   price: string
-  skuCode: string
+  skuId: string
 }
 interface brandObj {
   id: string // 品牌id

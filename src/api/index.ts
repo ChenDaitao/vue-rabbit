@@ -1,6 +1,6 @@
 /*
  * @Date: 2023-06-11 15:15:58
- * @LastEditTime: 2023-06-11 17:32:32
+ * @LastEditTime: 2023-07-11 21:41:35
  * @Description: 基本请求
  */
 import axios from '@/utils/http'
@@ -39,7 +39,7 @@ class Api {
     return axios.post(url, params, config ? configs : hearderConfig)
   }
 
-  delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  delete<T = any>(url: string, config?: AxiosRequestConfig | RequestParams): Promise<T> {
     return axios.delete(url, config)
   }
 

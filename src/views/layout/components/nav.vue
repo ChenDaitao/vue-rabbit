@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import hearderCart from './hearderCart.vue';
 import { useScroll } from '@vueuse/core'
+
 import useLayoutStore from '@/stores/modules/layout'
 const layoutStore = useLayoutStore()
 
@@ -27,6 +29,7 @@ const { y } = useScroll(window) //单位px
         <input type="text" placeholder="搜一搜" />
       </div>
       <!-- 头部购物车 -->
+      <hearderCart/>
     </div>
   </header>
 </template>
