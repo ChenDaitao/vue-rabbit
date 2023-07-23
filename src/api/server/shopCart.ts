@@ -1,10 +1,19 @@
 import Api from '../index'
+import type { orderInfo, orderPayBack } from './type'
 
-interface insertShopCart {
+export interface insertShopCart {
   skuId: string
   count: number
 }
 
+interface orderPay {
+  deliveryTimeType: number
+  payType: number
+  payChannel: number
+  buyerMessage: string
+  goods: insertShopCart[]
+  addressId: string
+}
 type deleteShopCart = Array<string>
 
 class shopCartApi extends Api {
@@ -15,6 +24,14 @@ class shopCartApi extends Api {
   /* 删除购物车 */
   deleteShopCart(data: deleteShopCart) {
     return this.delete(`${this.baseUrl}/member/cart`, data)
+  }
+  /* 获取订单结算信息 */
+  getCheckoutInfo() {
+    return this.get<orderInfo>(`${this.baseUrl}/member/order/pre`)
+  }
+  /* 创建订单 */
+  getOrderCreate(data: orderPay) {
+    return this.post<orderPayBack>('/member/order', data)
   }
 }
 

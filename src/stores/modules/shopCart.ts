@@ -1,6 +1,6 @@
 /*
  * @Date: 2023-07-08 11:08:12
- * @LastEditTime: 2023-07-17 23:10:40
+ * @LastEditTime: 2023-07-23 21:23:11
  * @Description: 购物车相关
  */
 import { defineStore } from 'pinia'
@@ -61,7 +61,6 @@ export const useShopCartStore = defineStore('SHOP_CART', () => {
   const singleCheck = (skuId: string, selected: boolean) => {
     const item: shopCartGoods = cartList.value.find((item: shopCartGoods) => skuId === item.skuId)
     item.selected = selected
-    console.log(cartList.value, 'cartList.value')
   }
 
   // 购物车商品全选

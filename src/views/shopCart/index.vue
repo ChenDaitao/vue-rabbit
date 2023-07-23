@@ -93,7 +93,9 @@ const selectAll = (val: boolean) => {
           <span class="red">¥ {{ shopCartStore.selectedPrice }} </span>
         </div>
         <div class="total">
-          <el-button size="large" type="primary">下单结算</el-button>
+          <el-button size="large" type="primary">
+            <RouterLink to="/order">下单结算</RouterLink>
+          </el-button>
         </div>
       </div>
     </div>

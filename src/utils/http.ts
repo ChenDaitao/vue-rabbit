@@ -31,10 +31,11 @@ httpInstance.interceptors.request.use(
 httpInstance.interceptors.response.use(
   (res: AxiosResponse) => res.data,
   (e: AxiosError) => {
+    const { msg } = e.response?.data as any
     // 全局提示
     ElMessage({
       type: 'warning',
-      message: e.response?.data
+      message: msg
     })
 
     // 401 token失效

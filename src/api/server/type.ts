@@ -6,16 +6,16 @@ type ResultType<T> = {
 }
 
 interface childrenObj {
-  children: null | any
-  goods: null | any
+  children: null | childrenObj[]
+  goods: null | goodsObj[]
   id: string
   name: string
   picture: string
-  brands?: null | any
-  categories?: null | any
-  saleProperties?: null | any
-  parentId?: null | any
-  parentName?: null | any
+  brands?: null | string
+  categories?: null | string
+  saleProperties?: null | string
+  parentId?: null | string
+  parentName?: null | string
 }
 export interface goodsObj {
   desc: string
@@ -24,9 +24,14 @@ export interface goodsObj {
   orderNum: null | number
   picture: string
   price: string
-  categories?: null | any //分类集合
-  brands?: null | any //推荐品牌
-  saleProperties?: null | any //销售属性
+  skuId?: string
+  categories?: string | null //分类集合
+  brands?: string | null //推荐品牌
+  count?: number
+  saleProperties?: string | null //销售属性
+  attrsText?: string | null
+  totalPrice?: string | null
+  totalPayPrice?: string | null
 }
 export interface baseObj {
   id: string
@@ -171,3 +176,47 @@ export interface userInfoObj {
   profession: string // 用户职业
 }
 export type userInfo = ResultType<userInfoObj>
+
+// NOTE: 订单相关信息
+export interface userAddressesObj {
+  id: string
+  receiver: string
+  contact: string
+  provinceCode: string
+  cityCode: string
+  countyCode: string
+  address: string
+  isDefault: number
+  fullLocation: string
+  postalCode: string
+  addressTags: string
+}
+export interface summaryObj {
+  goodsCount: number
+  totalPrice: number
+  totalPayPrice: number
+  postFee: number
+  discountPrice: number
+}
+type orderInfoObj = {
+  userAddresses: userAddressesObj[]
+  goods: goodsObj[]
+  summary: summaryObj
+}
+export type orderInfo = ResultType<orderInfoObj>
+// NOTE: 提交订单
+export interface orderPayBackObj {
+  id: string
+  createTime: string
+  payType: number
+  orderState: number
+  payLatestTime: string
+  postFee: number
+  payMoney: number
+  totalMoney: number
+  totalNum: number
+  skus: string | null
+  payChannel: number
+  countdown: number | null
+}
+export type orderPayBack = ResultType<orderPayBackObj>
