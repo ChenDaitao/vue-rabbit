@@ -1,10 +1,22 @@
 <!--
  * @Date: 2023-07-23 22:05:16
- * @LastEditTime: 2023-07-23 22:05:19
+ * @LastEditTime: 2023-07-23 22:59:53
  * @Description: 支付页面
 -->
 <script setup lang="ts">
-const payInfo = {}
+import { useRoute } from 'vue-router'
+import { ref } from 'vue'
+import shopCart from '@/api/server/shopCart'
+const route = useRoute()
+
+const payInfo = ref<any>({})
+const paramsId = route.params.id as string
+
+async function getPayInfo(id: string) {
+  const { result } = await shopCart.getPayInfo(id)
+  payInfo.value = result
+}
+getPayInfo(paramsId)
 </script>
 
 <template>
@@ -28,7 +40,7 @@ const payInfo = {}
         <div class="item">
           <p>支付平台</p>
           <a class="btn wx" href="javascript:;"></a>
-          <a class="btn alipay" :href="payUrl"></a>
+          <!-- <a class="btn alipay" :href="payUrl"></a> -->
         </div>
         <div class="item">
           <p>支付方式</p>

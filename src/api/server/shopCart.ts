@@ -33,6 +33,10 @@ class shopCartApi extends Api {
   getOrderCreate(data: orderPay) {
     return this.post<orderPayBack>('/member/order', data)
   }
+  /* 创建订单 */
+  getPayInfo(id: string) {
+    return this.get(`/member/order/${id}`)
+  }
 }
 
 export default new shopCartApi()
