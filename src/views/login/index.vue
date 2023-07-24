@@ -2,8 +2,12 @@
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/modules/login'
 import { ElMessage } from 'element-plus'
+import loginApi from '@/api/server/login'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
+const router = useRouter()
+
 // 表单数据对象
 const userInfo = ref({
   account: '1311111111',
@@ -30,7 +34,25 @@ const doLogin = () => {
         return
       }
       const { account, password } = userInfo.value
-      userStore.getUserInfo({ account, password })
+      loginApi
+        .loginIn({ account, password })
+        .then(({ code, msg, result }) => {
+          if (code == '1') {
+            userStore.userInfo = result
+            ElMessage({
+              type: 'success',
+              message: msg
+            })
+            router.push('/')
+          } else
+            ElMessage({
+              type: 'error',
+              message: msg
+            })
+        })
+        .catch((err) => {
+          ElMessage.error(err)
+        })
     }
   })
 }

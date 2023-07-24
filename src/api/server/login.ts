@@ -7,7 +7,8 @@ export interface loginData {
 }
 class loginApi extends Api {
   loginIn(data: loginData) {
-    return this.post<userInfo>(`${this.baseUrl}/login`, data)
+    // return this.post<userInfo>(`${this.baseUrl}/login`, data)
+    return this.get<userInfo>(`/login.json`)
   }
 }
 

@@ -16,6 +16,16 @@ interface orderPay {
 }
 type deleteShopCart = Array<string>
 
+interface GuessLike {
+  limit: number
+}
+
+interface MyOrderParmas {
+  orderState: number
+  page: number
+  pageSize: number
+}
+
 class shopCartApi extends Api {
   /* 商品加入购物车 */
   insertShopCart(data: insertShopCart) {
@@ -31,11 +41,19 @@ class shopCartApi extends Api {
   }
   /* 创建订单 */
   getOrderCreate(data: orderPay) {
-    return this.post<orderPayBack>('/member/order', data)
+    return this.post<orderPayBack>('${this.baseUrl}/member/order', data)
   }
   /* 创建订单 */
   getPayInfo(id: string) {
-    return this.get(`/member/order/${id}`)
+    return this.get(`${this.baseUrl}/member/order/${id}`)
+  }
+  /* 猜你喜欢 */
+  guessLike(data: GuessLike) {
+    return this.post<orderPayBack>(`${this.baseUrl}/goods/relevant`, data)
+  }
+  /* 获取我的订单 */
+  getMyOrder(data: MyOrderParmas) {
+    return this.get(`${this.baseUrl}/member/order`, data)
   }
 }
 

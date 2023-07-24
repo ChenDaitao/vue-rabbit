@@ -43,6 +43,21 @@ const router = createRouter({
           path: 'pay',
           name: 'pay',
           component: () => import('@/views/orderPage/payPage.vue')
+        },
+        {
+          path: 'vip',
+          name: 'vip',
+          component: () => import('@/views/vipCenter/index.vue'),
+          children: [
+            {
+              path: 'user',
+              component: () => import('@/views/vipCenter/components/memberInfo.vue')
+            },
+            {
+              path: 'order',
+              component: () => import('@/views/vipCenter/components/memberOrder.vue')
+            }
+          ]
         }
       ]
     },

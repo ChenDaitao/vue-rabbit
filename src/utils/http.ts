@@ -1,6 +1,6 @@
 /*
  * @Date: 2023-06-11 15:08:35
- * @LastEditTime: 2023-06-28 21:13:51
+ * @LastEditTime: 2023-07-24 21:50:19
  * @Description: axios基础封装
  */
 import axios from 'axios'
@@ -19,8 +19,9 @@ httpInstance.interceptors.request.use(
   (config /* : AxiosRequestConfig */) => {
     const userStore = useUserStore()
     const token = userStore.userInfo?.token
+
     if (token) {
-      config.headers.Authorization = 'Bearer${token}'
+      config.headers.Authorization = `Bearer${token}`
     }
     return config
   },

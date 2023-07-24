@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-
-const router = useRouter()
 import { useUserStore } from '@/stores/modules/login'
 
+const userStore = useUserStore()
+const router = useRouter()
+
 const confirm = () => {
-  const userStore = useUserStore()
   userStore.getInfoClear()
   router.push('/login')
 }
@@ -16,7 +16,12 @@ const confirm = () => {
     <div class="container">
       <ul>
         <template v-if="true">
-          <li>
+          <li v-if="userStore.userInfo?.token">
+            <a href="javascript:;">
+              <i class="iconfont icon-user"></i>{{ userStore.userInfo?.nickname }}
+            </a>
+          </li>
+          <li v-else>
             <a href="javascript:;" @click="router.push('/login')">
               <i class="iconfont icon-user"></i>请先登录
             </a>
@@ -34,7 +39,7 @@ const confirm = () => {
             </el-popconfirm>
           </li>
           <li><a href="javascript:;">我的订单</a></li>
-          <li><a href="javascript:;">会员中心</a></li>
+          <li><a href="javascript:;" @click="router.push('/vip')">会员中心</a></li>
         </template>
         <template v-else>
           <li><a href="javascript:;">请先登录</a></li>
