@@ -16,8 +16,8 @@ export const useUserStore = defineStore(
       userInfo,
       getInfoClear
     }
+  },
+  {
+    persist: true //pinia 持久化插件--piniaPluginPersistedstate
   }
-  // {
-  //   persist: true
-  // }
 )
